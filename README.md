@@ -1,80 +1,62 @@
+
 # Spring Facturas JPA
 
 ## Descripción
 
-Este proyecto es un ejercicio de Spring Boot MVC que implementa un sistema CRUD (Crear, Leer, Actualizar, Eliminar) para la gestión de facturas. Utiliza Spring Data JPA para interactuar con una base de datos MySQL, Thymeleaf para la renderización de vistas HTML, y Spring Web para manejar las solicitudes HTTP.
+Spring Facturas JPA es un proyecto basado en Spring Boot MVC diseñado para la gestión de facturas mediante operaciones CRUD (Crear, Leer, Actualizar, Eliminar). Se apoya en Spring Data JPA para la interacción con MySQL, Thymeleaf para la renderización de vistas HTML, y Spring Web para el manejo de solicitudes HTTP.
 
-## Características
+## Funcionalidades
 
-- **Página de Inicio**: Punto de entrada de la aplicación desde donde los usuarios pueden navegar a las diferentes secciones.
-- **Registro de Facturas**: Permite a los usuarios agregar nuevas facturas a través de un formulario.
-- **Lista de Facturas**: Muestra todas las facturas registradas con opciones para editar o eliminar cada factura.
-- **Edición de Facturas**: Los usuarios pueden actualizar los datos de las facturas existentes.
-- **Eliminación de Facturas**: Permite a los usuarios eliminar facturas del sistema.
+- **Página de Inicio**: Acceso principal para la navegación entre secciones.
+- **Registro de Facturas**: Formulario para la adición de nuevas facturas.
+- **Lista de Facturas**: Visualización y gestión (edición/eliminación) de facturas registradas.
+- **Edición y Eliminación de Facturas**: Interfaces para actualizar o remover facturas.
 
-## Configuración del Proyecto
+## Configuración e Instalación
 
-### Requisitos Previos
+### Requisitos
 
 - JDK 11 o superior.
-- Spring Tool Suite 4 o IDE de preferencia con soporte Spring.
-- MySQL Server.
+- IDE con soporte Spring (recomendado: Spring Tool Suite 4).
+- MySQL Server (preferiblemente a través de XAMPP, configurado en el puerto 3307).
 
-### Paso 1: Crear la Base de Datos
+### Instalación y Configuración
 
-En MySQL Workbench, crea una base de datos llamada `facturas` y una tabla `invoices` con las columnas adecuadas según el modelo de datos.
+1. **Base de Datos**:
+   - Utiliza MySQL Workbench o XAMPP para crear una base de datos llamada `facturas`.
+   - Configura el puerto 3307 en XAMPP para MySQL si es necesario.
+   - La aplicación está configurada para auto-crear la tabla `invoices` al arrancar, basándose en la clase de entidad.
 
-### Paso 2: Crear el Proyecto
+2. **Proyecto**:
+   - Crea un nuevo proyecto Spring Boot con las dependencias necesarias (Spring Web, Spring Data JPA, MySQL Driver, Thymeleaf, Spring Boot DevTools) usando Spring Tool Suite 4 o tu IDE de preferencia.
 
-Utiliza Spring Tool Suite 4 para crear un nuevo proyecto de Spring Boot con las dependencias:
-- Spring Web
-- Spring Data JPA
-- MySQL Driver
-- Thymeleaf
-- Spring Boot DevTools
+3. **Archivo de Propiedades**:
+   - En `src/main/resources/application.properties`, configura la conexión a tu base de datos MySQL, incluyendo URL, nombre de usuario, y contraseña, asegurándote de especificar el puerto 3307 para la conexión.
 
-### Paso 3: Configurar `application.properties`
+4. **Desarrollo**:
+   - **Clase de Entidad**: Define `Invoice` en `src/main/java/com/tuempresa/facturas/model`.
+   - **Interfaz de Repositorio**: Crea una en `src/main/java/com/tuempresa/facturas/repository`.
+   - **Servicios y Controladores**: Implementa la lógica de negocio y el manejo de solicitudes HTTP respectivamente.
 
-Configura el archivo `src/main/resources/application.properties` para conectar con tu base de datos MySQL, especificando la URL, el nombre de usuario y la contraseña.
+5. **Vistas**:
+   - Desarrolla las páginas HTML con Thymeleaf en `src/main/resources/templates` para las diferentes funcionalidades.
 
-### Paso 4: Crear la Clase de Entidad
+### Ejecución
 
-Define una clase de entidad `Invoice` en `src/main/java/com/tuempresa/facturas/model` para mapear la tabla `invoices`.
-
-### Paso 5: Crear la Interfaz del Repositorio
-
-Crea una interfaz en `src/main/java/com/tuempresa/facturas/repository` que extienda `JpaRepository` para acceder a la base de datos.
-
-### Paso 6: Clases de Servicio
-
-Implementa una interfaz de servicio y su clase de implementación en `src/main/java/com/tuempresa/facturas/service` para la lógica de negocio.
-
-### Paso 7: Crear la Clase Controladora
-
-Desarrolla una clase controladora en `src/main/java/com/tuempresa/facturas/controller` para manejar las solicitudes HTTP.
-
-### Paso 8: Crear las Páginas de Navegación
-
-Utiliza Thymeleaf para desarrollar las páginas HTML en `src/main/resources/templates` para las diferentes vistas y funcionalidades de la aplicación.
-
-## Ejecución
-
-Para ejecutar el proyecto, navega al directorio raíz y ejecuta:
+Para arrancar el proyecto, navega al directorio raíz y ejecuta:
 
 ```
 ./mvnw spring-boot:run
 ```
 
-
-Abre un navegador y visita `http://localhost:8080` para acceder a la aplicación.
+Visita `http://localhost:8080` en tu navegador para acceder a la aplicación.
 
 ## Navegación en la Aplicación
 
-- Desde la **página de inicio**, utiliza los enlaces para navegar a "Agregar factura" o "Mostrar todas las facturas".
-- En la **página de registro de facturas**, completa el formulario y guarda la factura.
-- La **página Lista de facturas** permite editar o eliminar facturas, y navegar de vuelta a la página de inicio o al formulario de registro de facturas.
+- **Página de Inicio**: Enlaces para agregar o mostrar todas las facturas.
+- **Registro de Facturas**: Completa el formulario para guardar una nueva factura.
+- **Lista de Facturas**: Edita o elimina facturas, con opciones para volver a la página de inicio o al formulario de registro.
 
 ## Contribución
 
-Si deseas contribuir a este proyecto, por favor haz un fork y envía un pull request con tus cambios.
-
+Si deseas contribuir al proyecto, por favor haz un fork, aplica tus cambios, y envía un pull request.
